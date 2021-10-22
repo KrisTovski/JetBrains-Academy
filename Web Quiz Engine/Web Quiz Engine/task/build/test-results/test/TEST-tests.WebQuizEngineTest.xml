@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.WebQuizEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-29T17:58:38" hostname="LAPTOP-HFQ89SCU" time="31.222">
+  <properties/>
+  <testcase name="start" classname="tests.WebQuizEngineTest" time="31.222"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-12-29 18:58:39.506  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine on LAPTOP-HFQ89SCU with PID 12988 (started by Krzysiek in C:\Projects\Web Quiz Engine\Web Quiz Engine\task)
+2020-12-29 18:58:39.511  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2020-12-29 18:58:40.943  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-12-29 18:58:41.077  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119ms. Found 3 JPA repository interfaces.
+2020-12-29 18:58:41.677  INFO 12988 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-29 18:58:42.028  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2020-12-29 18:58:42.053  INFO 12988 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-29 18:58:42.053  INFO 12988 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-12-29 18:58:42.224  INFO 12988 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-29 18:58:42.224  INFO 12988 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2641 ms
+2020-12-29 18:58:42.380  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-12-29 18:58:42.632  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-12-29 18:58:42.640  INFO 12988 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2020-12-29 18:58:43.027  INFO 12988 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-29 18:58:43.169  INFO 12988 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-12-29 18:58:43.456  INFO 12988 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-29 18:58:43.644  INFO 12988 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: create table completion (completion_id integer not null, completed_at timestamp not null, id integer not null, user_id integer not null, primary key (completion_id))
+Hibernate: create table quiz (id integer not null, answer binary(255), options binary(255) not null, text varchar(255), title varchar(255), author_id integer, primary key (id))
+Hibernate: create table user (id integer not null, email varchar(255), password varchar(255), primary key (id))
+Hibernate: create sequence hibernate_sequence start with 1 increment by 1
+Hibernate: alter table completion add constraint FKfiftcbuy9pcsbkajvki4lyife foreign key (user_id) references user
+Hibernate: alter table quiz add constraint FK9n0balghewnhi2ci2k8hleigm foreign key (author_id) references user
+2020-12-29 18:58:44.842  INFO 12988 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-29 18:58:44.849  INFO 12988 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:58:45.293  WARN 12988 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-29 18:58:45.544  INFO 12988 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:58:46.072  INFO 12988 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c548d51, org.springframework.security.web.context.SecurityContextPersistenceFilter@a4281dd, org.springframework.security.web.header.HeaderWriterFilter@56a65888, org.springframework.security.web.authentication.logout.LogoutFilter@df4c6cd, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7989787a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b76c092, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66bbd924, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6576e78c, org.springframework.security.web.session.SessionManagementFilter@52fe0b59, org.springframework.security.web.access.ExceptionTranslationFilter@4fcbdd68, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2fb8649]
+2020-12-29 18:58:46.115  INFO 12988 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-12-29 18:58:46.190  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2020-12-29 18:58:46.193  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 7.236 seconds (JVM running for 8.427)
+2020-12-29 18:58:46.631  INFO 12988 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 18:58:46.632  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-29 18:58:46.643  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user (email, password, id) values (?, ?, ?)
+?[1;31m
+Start test 2?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user (email, password, id) values (?, ?, ?)
+?[1;31m
+Start test 3?[0m
+2020-12-29 18:58:47.340  WARN 12988 --- [nio-8889-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void engine.controller.UserController.registration(engine.model.User): [Field error in object 'user' on field 'email': rejected value [google.com]; codes [Email.user.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@1bd77df0,^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$]; default message [must be a well-formed email address]] ]
+?[1;31m
+Start test 4?[0m
+2020-12-29 18:58:47.417  WARN 12988 --- [nio-8889-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void engine.controller.UserController.registration(engine.model.User): [Field error in object 'user' on field 'email': rejected value [well@googlecom]; codes [Email.user.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@1bd77df0,^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$]; default message [must be a well-formed email address]] ]
+?[1;31m
+Start test 5?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 6?[0m
+2020-12-29 18:58:47.461  WARN 12988 --- [nio-8889-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void engine.controller.UserController.registration(engine.model.User): [Field error in object 'user' on field 'password': rejected value [1234]; codes [Size.user.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password],2147483647,5]; default message [size must be between 5 and 2147483647]] ]
+?[1;31m
+Start test 7?[0m
+2020-12-29 18:58:47.472  WARN 12988 --- [nio-8889-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void engine.controller.UserController.registration(engine.model.User): [Field error in object 'user' on field 'password': rejected value [123]; codes [Size.user.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password],2147483647,5]; default message [size must be between 5 and 2147483647]] ]
+?[1;31m
+Start test 8?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:47.738  WARN 12988 --- [nio-8889-exec-9] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [112] milliseconds.
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+?[1;31m
+Start test 9?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+?[1;31m
+Start test 10?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 11?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 12?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 13?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 14?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 15?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 16?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 17?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 18?[0m
+?[1;31m
+Start test 19?[0m
+?[1;31m
+Start test 20?[0m
+?[1;31m
+Start test 21?[0m
+?[1;31m
+Start test 22?[0m
+?[1;31m
+Start test 23?[0m
+?[1;31m
+Start test 24?[0m
+?[1;31m
+Start test 25?[0m
+?[1;31m
+Start test 26?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 27?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 28?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 29?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 30?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 31?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 32?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 33?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 34?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 35?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 36?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 37?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 38?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 39?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 40?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 41?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 42?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 43?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 44?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 45?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 46?[0m
+2020-12-29 18:58:50.863  INFO 12988 --- [       Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:58:50.864  INFO 12988 --- [       Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:58:50.867  INFO 12988 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-12-29 18:58:50.909  INFO 12988 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-12-29 18:58:51.010  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine on LAPTOP-HFQ89SCU with PID 12988 (started by Krzysiek in C:\Projects\Web Quiz Engine\Web Quiz Engine\task)
+2020-12-29 18:58:51.010  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2020-12-29 18:58:51.072  INFO 12988 --- [       Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-12-29 18:58:51.078  INFO 12988 --- [       Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-12-29 18:58:51.334  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-12-29 18:58:51.350  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 3 JPA repository interfaces.
+2020-12-29 18:58:51.402  INFO 12988 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-29 18:58:51.440  WARN 12988 --- [    Test worker] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2020-12-29 18:58:51.452  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2020-12-29 18:58:51.453  INFO 12988 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-29 18:58:51.453  INFO 12988 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-12-29 18:58:51.488  INFO 12988 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-29 18:58:51.488  INFO 12988 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 475 ms
+2020-12-29 18:58:51.529  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-12-29 18:58:51.540  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-12-29 18:58:51.541  INFO 12988 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2020-12-29 18:58:51.649  INFO 12988 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-29 18:58:51.657  INFO 12988 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-12-29 18:58:51.770  INFO 12988 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-29 18:58:51.771  INFO 12988 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:58:51.839  WARN 12988 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-29 18:58:51.930  INFO 12988 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:58:52.037  INFO 12988 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1794c128, org.springframework.security.web.context.SecurityContextPersistenceFilter@5cd65a16, org.springframework.security.web.header.HeaderWriterFilter@3f32c44e, org.springframework.security.web.authentication.logout.LogoutFilter@7f95ea5d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4d6e48a7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@466e84ec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fd738db, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7662427e, org.springframework.security.web.session.SessionManagementFilter@2bfab5da, org.springframework.security.web.access.ExceptionTranslationFilter@485a5f07, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@68c79b57]
+2020-12-29 18:58:52.063  INFO 12988 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-12-29 18:58:52.088  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2020-12-29 18:58:52.089  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 1.123 seconds (JVM running for 14.323)
+?[1;31m
+Start test 47?[0m
+2020-12-29 18:58:52.095  INFO 12988 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 18:58:52.095  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-29 18:58:52.099  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 48?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 49?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 50?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 51?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 52?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 53?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 54?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 55?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 56?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 57?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.022  WARN 12988 --- [nio-8889-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 4, column: 4]]
+?[1;31m
+Start test 58?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.107  WARN 12988 --- [nio-8889-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 5, column: 4]]
+?[1;31m
+Start test 59?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.174  WARN 12988 --- [nio-8889-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 4, column: 4]]
+?[1;31m
+Start test 60?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.244  WARN 12988 --- [nio-8889-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 5, column: 4]]
+?[1;31m
+Start test 61?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.336  WARN 12988 --- [nio-8889-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public engine.model.Quiz engine.controller.QuizController.createQuiz(engine.model.Quiz): [Field error in object 'quiz' on field 'options': rejected value [null]; codes [NotNull.quiz.options,NotNull.options,NotNull.[Ljava.lang.String;,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [quiz.options,options]; arguments []; default message [options]]; default message [must not be null]] ]
+?[1;31m
+Start test 62?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.421  WARN 12988 --- [nio-8889-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 5, column: 4]]
+?[1;31m
+Start test 63?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+2020-12-29 18:58:53.486  WARN 12988 --- [nio-8889-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 5, column: 4]]
+?[1;31m
+Start test 64?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 65?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 66?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 67?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 68?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 69?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 70?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 71?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 72?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 73?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 74?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 75?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 76?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 77?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 78?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 79?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 80?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 81?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 82?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 83?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 84?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 85?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 86?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 87?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 88?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 89?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 90?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 91?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 92?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 93?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 94?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 95?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 96?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 97?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 98?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 99?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 100?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 101?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 102?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 103?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 104?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 105?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 106?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 107?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 108?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 109?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 110?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 111?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 112?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 113?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 114?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 115?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 116?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 117?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 118?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 119?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 120?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 121?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 122?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 123?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 124?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 125?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 126?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 127?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 128?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 129?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 130?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 131?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 132?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 133?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 134?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 135?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 136?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 137?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 138?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 139?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 140?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 141?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 142?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 143?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 144?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 145?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 146?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 147?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 148?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 149?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 150?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 151?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 152?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 153?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 154?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 155?[0m
+2020-12-29 18:59:01.141  INFO 12988 --- [       Thread-9] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:59:01.143  INFO 12988 --- [       Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:59:01.144  INFO 12988 --- [       Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-12-29 18:59:01.179  INFO 12988 --- [       Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-12-29 18:59:01.270  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine on LAPTOP-HFQ89SCU with PID 12988 (started by Krzysiek in C:\Projects\Web Quiz Engine\Web Quiz Engine\task)
+2020-12-29 18:59:01.271  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2020-12-29 18:59:01.275  INFO 12988 --- [       Thread-9] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-12-29 18:59:01.280  INFO 12988 --- [       Thread-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-12-29 18:59:01.543  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-12-29 18:59:01.559  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 3 JPA repository interfaces.
+2020-12-29 18:59:01.614  INFO 12988 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-29 18:59:01.641  WARN 12988 --- [    Test worker] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2020-12-29 18:59:01.647  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2020-12-29 18:59:01.647  INFO 12988 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-29 18:59:01.647  INFO 12988 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-12-29 18:59:01.674  INFO 12988 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-29 18:59:01.674  INFO 12988 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 399 ms
+2020-12-29 18:59:01.707  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2020-12-29 18:59:01.716  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2020-12-29 18:59:01.717  INFO 12988 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2020-12-29 18:59:01.789  INFO 12988 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-29 18:59:01.795  INFO 12988 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-12-29 18:59:01.875  INFO 12988 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-29 18:59:01.876  INFO 12988 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:59:01.944  WARN 12988 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-29 18:59:02.016  INFO 12988 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:59:02.120  INFO 12988 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1523ec68, org.springframework.security.web.context.SecurityContextPersistenceFilter@137ac869, org.springframework.security.web.header.HeaderWriterFilter@7dfc0503, org.springframework.security.web.authentication.logout.LogoutFilter@1fe466d7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2611d45f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ce0b589, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21a96b0b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ba641b4, org.springframework.security.web.session.SessionManagementFilter@44c7f1a2, org.springframework.security.web.access.ExceptionTranslationFilter@342362c5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@14d51ce1]
+2020-12-29 18:59:02.135  INFO 12988 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-12-29 18:59:02.151  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2020-12-29 18:59:02.152  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 0.908 seconds (JVM running for 24.385)
+?[1;31m
+Start test 156?[0m
+2020-12-29 18:59:02.156  INFO 12988 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 18:59:02.156  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-29 18:59:02.159  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 157?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 158?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 159?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 160?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 161?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 162?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 163?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 164?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 165?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 166?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 167?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 168?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 169?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 170?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 171?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+?[1;31m
+Start test 172?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 173?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 174?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 175?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 176?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 177?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 178?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 179?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 180?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 181?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 182?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 183?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into completion (completed_at, id, user_id, completion_id) values (?, ?, ?, ?)
+?[1;31m
+Start test 184?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 185?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 186?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 187?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 188?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 189?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 190?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ? offset ?
+?[1;31m
+Start test 191?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 192?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 193?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 194?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 195?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 196?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ?
+Hibernate: select count(completion0_.completion_id) as col_0_0_ from completion completion0_ where completion0_.user_id=?
+?[1;31m
+Start test 197?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ? offset ?
+?[1;31m
+Start test 198?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select completion0_.completion_id as completi1_0_, completion0_.completed_at as complete2_0_, completion0_.id as id3_0_, completion0_.user_id as user_id4_0_ from completion completion0_ where completion0_.user_id=? order by completion0_.completed_at desc limit ? offset ?
+?[1;31m
+Start test 199?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: delete from quiz where id=?
+?[1;31m
+Start test 200?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 201?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 202?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 203?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 204?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 205?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 206?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+?[1;31m
+Start test 207?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: delete from quiz where id=?
+?[1;31m
+Start test 208?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 209?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 210?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 211?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 212?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 213?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 214?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 215?[0m
+2020-12-29 18:59:07.314  INFO 12988 --- [      Thread-12] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:59:07.315  INFO 12988 --- [      Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:59:07.316  INFO 12988 --- [      Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2020-12-29 18:59:07.361  INFO 12988 --- [      Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-12-29 18:59:07.456  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine on LAPTOP-HFQ89SCU with PID 12988 (started by Krzysiek in C:\Projects\Web Quiz Engine\Web Quiz Engine\task)
+2020-12-29 18:59:07.457  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2020-12-29 18:59:07.526  INFO 12988 --- [      Thread-12] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-12-29 18:59:07.531  INFO 12988 --- [      Thread-12] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-12-29 18:59:07.717  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-12-29 18:59:07.734  INFO 12988 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 3 JPA repository interfaces.
+2020-12-29 18:59:07.780  INFO 12988 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-29 18:59:07.800  WARN 12988 --- [    Test worker] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2020-12-29 18:59:07.805  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2020-12-29 18:59:07.806  INFO 12988 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-29 18:59:07.806  INFO 12988 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-12-29 18:59:07.830  INFO 12988 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-29 18:59:07.830  INFO 12988 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 370 ms
+2020-12-29 18:59:07.857  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2020-12-29 18:59:07.864  INFO 12988 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2020-12-29 18:59:07.864  INFO 12988 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2020-12-29 18:59:07.938  INFO 12988 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-29 18:59:07.952  INFO 12988 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-12-29 18:59:08.026  INFO 12988 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-29 18:59:08.026  INFO 12988 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-29 18:59:08.091  WARN 12988 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-29 18:59:08.170  INFO 12988 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 18:59:08.278  INFO 12988 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@34efca2c, org.springframework.security.web.context.SecurityContextPersistenceFilter@5051240d, org.springframework.security.web.header.HeaderWriterFilter@46ceac12, org.springframework.security.web.authentication.logout.LogoutFilter@2c6e05d6, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@484b9bbf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6190ba2e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@528d3432, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28b09335, org.springframework.security.web.session.SessionManagementFilter@4ecd3428, org.springframework.security.web.access.ExceptionTranslationFilter@25129c5d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25e37d6c]
+2020-12-29 18:59:08.289  INFO 12988 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-12-29 18:59:08.304  INFO 12988 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2020-12-29 18:59:08.305  INFO 12988 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 0.889 seconds (JVM running for 30.539)
+?[1;31m
+Start test 216?[0m
+2020-12-29 18:59:08.310  INFO 12988 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 18:59:08.310  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-29 18:59:08.314  INFO 12988 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 217?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 218?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 219?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 220?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_0_, quiz0_.answer as answer2_1_0_, quiz0_.author_id as author_i6_1_0_, quiz0_.options as options3_1_0_, quiz0_.text as text4_1_0_, quiz0_.title as title5_1_0_, user1_.id as id1_2_1_, user1_.email as email2_2_1_, user1_.password as password3_2_1_ from quiz quiz0_ left outer join user user1_ on quiz0_.author_id=user1_.id where quiz0_.id=?
+?[1;31m
+Start test 221?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 222?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 223?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 224?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 225?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 226?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 227?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 228?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 229?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 230?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into quiz (answer, author_id, options, text, title, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 231?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select count(quiz0_.id) as col_0_0_ from quiz quiz0_
+?[1;31m
+Start test 232?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select count(quiz0_.id) as col_0_0_ from quiz quiz0_
+?[1;31m
+Start test 233?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ? offset ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+?[1;31m
+Start test 234?[0m
+Hibernate: select user0_.id as id1_2_, user0_.email as email2_2_, user0_.password as password3_2_ from user user0_ where upper(user0_.email)=upper(?)
+Hibernate: select quiz0_.id as id1_1_, quiz0_.answer as answer2_1_, quiz0_.author_id as author_i6_1_, quiz0_.options as options3_1_, quiz0_.text as text4_1_, quiz0_.title as title5_1_ from quiz quiz0_ order by quiz0_.id asc limit ? offset ?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.email as email2_2_0_, user0_.password as password3_2_0_ from user user0_ where user0_.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
